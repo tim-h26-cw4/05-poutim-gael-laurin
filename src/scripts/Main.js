@@ -7,6 +7,7 @@ class Main {
   }
 
   init() {
+    // Chargement des icônes
     Icons.load();
 
     // Crée les instances de composantes de chefs
