@@ -14,6 +14,19 @@ export default class Poutine {
   }
 
   selectType(event) {
-    console.log(event.currentTarget.dataset.type);
+    for (let i = 0; i < this.types.length; i++) {
+      const type = this.types[i];
+      type.classList.remove('is-active');
+    }
+    event.currentTarget.classList.add('is-active');
+    this.selectedType = event.currentTarget.dataset.type;
+
+    this.updatePhoto();
+  }
+
+  updatePhoto() {
+    const image = this.element.querySelector('.js-image');
+    image.classList.add('is-active');
+    image.src = `assets/images/${this.selectedType}.png`;
   }
 }
