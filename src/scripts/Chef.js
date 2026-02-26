@@ -23,19 +23,38 @@ export default class Chef {
   }
 
   sendOrder() {
+    this.container.innerHTML = ''; // Vide le conteneur du reçu de commande
+    this.createHeader(); // Crée le titre du reçu de commande
+
     // Compter les poutines sélectionnées
     let total_poutines = 0;
     for (let i = 0; i < this.menu.length; i++) {
       const poutine = this.menu[i];
       if (poutine.selectedType != '') {
+        // Compte la poutine si une poutine a été sélectionnée
         total_poutines++;
+        this.createListItem(total_poutines, poutine.selectedType); // Créer un article sur le reçu de la commande
       }
     }
 
-    // Créer l'élément HTML qui indique le nombre de poutines
+    this.createFooter(total_poutines); // Ajoute le footer au reçu de commande
+  }
+
+  createHeader() {
+    const title = document.createElement('h2');
+    title.textContent = 'Voici le résumé de votre commande :';
+    this.container.appendChild(title);
+  }
+
+  createListItem(index, type) {
     const p = document.createElement('p');
-    p.textContent = `Nombre total de poutine(s) : ${total_poutines}`;
-    this.container.innerHTML = '';
+    p.textContent = ` Poutine #${index} - ${type}`;
+    this.container.appendChild(p);
+  }
+
+  createFooter(amount) {
+    const p = document.createElement('p');
+    p.textContent = `Nombre total de poutine(s) : ${amount}`;
     this.container.appendChild(p);
   }
 }
