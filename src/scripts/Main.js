@@ -9,7 +9,7 @@ class Main {
   init() {
     Icons.load();
 
-    // Crée les instances de composantes du chef
+    // Crée les instances de composantes de chefs
     const chefs = document.querySelectorAll('[data-component="chef"]');
     for (let i = 0; i < chefs.length; i++) {
       const element = chefs[i];
