@@ -23,6 +23,19 @@ export default class Chef {
   }
 
   sendOrder() {
-    console.log('order sent!');
+    // Compter les poutines sélectionnées
+    let total_poutines = 0;
+    for (let i = 0; i < this.menu.length; i++) {
+      const poutine = this.menu[i];
+      if (poutine.selectedType != '') {
+        total_poutines++;
+      }
+    }
+
+    // Créer l'élément HTML qui indique le nombre de poutines
+    const p = document.createElement('p');
+    p.textContent = `Nombre total de poutine(s) : ${total_poutines}`;
+    this.container.innerHTML = '';
+    this.container.appendChild(p);
   }
 }
